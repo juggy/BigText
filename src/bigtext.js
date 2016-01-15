@@ -67,19 +67,16 @@
       },
       generateCss: function(id, linesFontSizes, lineWordSpacings, minFontSizes)
       {
-        var css = [];
-
         BigText.clearCss(id);
 
         for(var j=0, k=linesFontSizes.length; j<k; j++) {
-          css.push('#' + id + ' .' + BigText.LINE_CLASS_PREFIX + j + ' {' +
+
+          $('#' + id + ' .' + BigText.LINE_CLASS_PREFIX + j).attr("style",
             (minFontSizes[j] ? ' white-space: normal;' : '') +
             (linesFontSizes[j] ? ' font-size: ' + linesFontSizes[j] + 'px;' : '') +
-            (lineWordSpacings[j] ? ' word-spacing: ' + lineWordSpacings[j] + 'px;' : '') +
-            '}');
+            (lineWordSpacings[j] ? ' word-spacing: ' + lineWordSpacings[j] + 'px;' : ''));
         }
-
-        return BigText.generateStyleTag(BigText.getStyleId(id), css);
+        return "";
       },
       jQueryMethod: function(options)
       {
